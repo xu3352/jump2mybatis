@@ -1,0 +1,50 @@
+<idea-plugin>
+    <id>com.xu3352.ideaplugin.mybatis</id>
+    <name>Jump2Mybatis</name>
+    <version>1.4</version>
+    <vendor email="xu3352@gmail.com" url="http://xu3352.github.io">NONE</vendor>
+
+    <description><![CDATA[
+        <h2>Jump to mybatis mapper sql file with selected text</h2>
+        <ur>
+            <li>select text "student.findById"</li>
+            <li>Choose pop menu "Jump2Mybatis" item with right mouse click</li>
+            <li>or use keyboard-shortcut "ALT+B" to do that</li>
+            <li>it will open "studentDao.xml"(which namespace is "student") file and locate to "findById" position</li>
+        </ur>
+    ]]></description>
+
+    <change-notes><![CDATA[
+        <ur>
+            <li>v1.4 mapper文件中的namespace包含(endswith)选中文本的namespace则可跳转</li>
+            <li>v1.3 mybatis的mapper文件更好的兼容namespace; 跳转文案支持替换 ServiceImpl|DaoImpl|Service|Dao 后的匹配</li>
+            <li>v1.2 add support of "namespaceService" or "namespaceDao" similar namespace matching</li>
+            <li>v1.1 only matching with regex '&lt;mapper\s+namespace="(\w+)".*&gt;' xml file</li>
+            <li>v1.0 published. find namespaceDao.xml file, and jump to keyword position</li>
+        </ur>
+    ]]></change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="com.xu3352.ideaplugin.mybatis.Jump2Mybatis" class="com.xu3352.ideaplugin.mybatis.Jump2Mybatis"
+                text="Jump2Mybatis"
+                description="Jump to Mybatis File">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="alt B"/>
+        </action>
+    </actions>
+
+</idea-plugin>
